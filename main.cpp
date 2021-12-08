@@ -18,13 +18,6 @@ void usage() {
         printf("sample : airodump mon0\n");
 }
 
-void airodump(const u_char* packet)
-{	
-
-}
-
-
-
 int main(int argc, char* argv[]) {
     	if (argc != 2 ) {
 		usage();
@@ -63,11 +56,12 @@ int main(int argc, char* argv[]) {
 		if(m.find(bssid)==m.end()) m[bssid]={1, essid};
 		else m[bssid].first++;
 	
+		system("clear");
 		printf("BSSID\t\t\tBeacons\t\t\tESSID\n");
 		for(auto i:m) {
 			printf("%s\t\t\t%d\t\t\t%s\n", i.first.c_str(), i.second.first, i.second.second.c_str());
 		}	
-		system("clear");	
+	
 	}
 	pcap_close(handle);
 }
